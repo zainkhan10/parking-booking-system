@@ -1,0 +1,29 @@
+.auth-container{
+    background: url(../../../assets/images/parking-bg.jpg) no-repeat center center;
+    background-size: cover;
+    min-height: 100vh;
+}
+.auth-form-container{
+    background-color:#f9f9f9;
+    padding: 20px;
+    border-radius: 4px;
+}
+.auth-page-heading{
+    text-align: center;
+    font-size: 28px;
+    color: #e4e4e4;
+    text-transform: uppercase;
+    text-shadow: 0 0 3px #000;
+    font-weight: 600;
+    border-bottom: 2px solid;
+}
+.auth-form-heading{
+    text-align: center;
+}
+.auth-form-heading h2{
+    color:#333;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 24px;
+    margin-bottom: 14px;
+}
