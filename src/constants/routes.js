@@ -8,24 +8,26 @@ import {
 import _ from "lodash";
 import Login from "../pages/Auth/Login";
 import Register from "../pages/Auth/Register";
-import { LOGIN, REGISTER } from "./routingNames";
+import { ADMIN, LOGIN, REGISTER, USER } from "./routingNames";
+import Layout from '../layout'
+import { useSelector } from "react-redux";
 
 export default () => {
   return (
     <Router>
       <Switch>
+        {/* <Route exact path="/" component={Dashboard} /> */}
         <Route exact path="/" component={Login} />
         <Route exact path={LOGIN} component={Login} />
         <Route exact path={REGISTER} component={Register} />
-        {/* <PrivateRoute component={protectedRoutes} /> */}
+        <PrivateRoute component={protectedRoutes} />
       </Switch>
     </Router>
   );
 };
 
 export const PrivateRoute = ({ component: Component, ...rest }) => {
-  //   const user = useSelector((state) => state.userReducer.currentUser);
-  const user = "";
+  const user = useSelector((state) => state.authReducer.user);
   return (
     <Route
       {...rest}
@@ -43,12 +45,12 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
     />
   );
 };
-// const protectedRoutes = () => {
-//   return (
-//     <Switch>
-//       <Route path="/company" component={Layout} />
-//       <Route path="/candidate" component={Layout} />
-//       <Redirect to="/" />
-//     </Switch>
-//   );
-// };
+const protectedRoutes = () => {
+  return (
+    <Switch>
+      <Route path={`${ADMIN}`} component={Layout} />
+      <Route path={`${USER}`} component={Layout} />
+      <Redirect to="/" />
+    </Switch>
+  );
+};

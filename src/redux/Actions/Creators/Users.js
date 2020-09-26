@@ -9,3 +9,4 @@ export const fetchUsers = () => (dispatch) => {
     else dispatch(actionDispatch(GET_USERS_FAILURE));
   });
 };
+

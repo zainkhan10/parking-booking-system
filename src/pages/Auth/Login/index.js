@@ -1,25 +1,31 @@
 import React, { useEffect } from "react";
-import { Col, Row, Form, Input, Button } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { Col, Row, Form, Input, Button, Alert } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
+import _ from "lodash";
 import "./style.css";
-import { REGISTER } from "../../../constants/routingNames";
+import { REGISTER, USER_SLOTS } from "../../../constants/routingNames";
+import { verifyUser } from "../../../redux/Actions/Creators/Auth";
+import { getFromLocal } from "../../../utils/Cache";
 
-import { useDispatch, useSelector } from "react-redux";
-import { fetchUsers } from "../../../redux/Actions/Creators/Users";
-
-export default () => {
+export default ({ history }) => {
   const dispatch = useDispatch();
-  const users = useSelector((state) => state.userReducer.users);
+  const user = useSelector((state) => state.authReducer.user);
+  const userCheck = useSelector((state) => state.authReducer.err);
 
   useEffect(() => {
-    dispatch(fetchUsers());
-  }, []);
+    const userFromStorage = getFromLocal("userInformation");
+    if (!_.isEmpty(userFromStorage) && userFromStorage.userType === "normal") {
+      history.push(`${USER_SLOTS}`);
+    }
+  }, [user]);
 
   const onFinish = (values) => {
-    console.log(values);
+    const { username, password } = values;
+    dispatch(verifyUser(username, password));
   };
-  
+
   return (
     <Row justify="center" align="middle" className="auth-container">
       <Col xs={22} sm={22} md={10} lg={9}>
@@ -76,6 +82,14 @@ export default () => {
             </Form.Item>
             Or <Link to={REGISTER}>register now!</Link>
           </Form>
+          {!_.isEmpty(userCheck) && (
+            <Alert
+              message="Incorrect Username / Password"
+              type="error"
+              showIcon
+              className="mt-10"
+            />
+          )}
         </div>
       </Col>
     </Row>

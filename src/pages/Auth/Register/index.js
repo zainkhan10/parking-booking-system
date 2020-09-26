@@ -1,17 +1,16 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Col, Row, Form, Input, Button } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { uuid } from "uuidv4";
-import "./style.css";
 import { LOGIN } from "../../../constants/routingNames";
-import AlertBox from "../../../components/AlertMsg";
-import { useDispatch, useSelector } from "react-redux";
 import { createUser } from "../../../redux/Actions/Creators/Auth";
+import AlertBox from "../../../components/AlertMsg";
+import "./style.css";
 
 export default ({ history }) => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.authReducer.user);
   const successMsg = useSelector((state) => state.commonReducer.success);
 
   const onFinish = (values) => {
