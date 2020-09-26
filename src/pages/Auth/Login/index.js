@@ -16,8 +16,11 @@ export default ({ history }) => {
 
   useEffect(() => {
     const userFromStorage = getFromLocal("userInformation");
-    if (!_.isEmpty(userFromStorage) && userFromStorage.userType === "normal") {
-      history.push(`${USER_SLOTS}`);
+    if (!_.isEmpty(userFromStorage)) {
+      if (userFromStorage.userType === "normal") {
+        dispatch(verifyUser(userFromStorage.username, userFromStorage.password));
+        history.push(`${USER_SLOTS}`);
+      }
     }
   }, [user]);
 

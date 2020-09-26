@@ -6,16 +6,18 @@ import { ADMIN, USER } from "../constants/routingNames";
 import UserLayout from "./User";
 import AdminLayout from "./Admin";
 import "./style.css";
+import { getFromLocal } from "../utils/Cache";
 
 export default (props) => {
   const user = useSelector((state) => state.authReducer.user);
+  const userFromStorage = getFromLocal("userInformation");
   return (
     <>
       <Switch>
         <Route
           path={USER}
           render={() => {
-            if (!_.isEmpty(user) && user.userType === "normal") {
+            if (!_.isEmpty(userFromStorage) && userFromStorage.userType === "normal") {
               return (
                 <>
                   <UserLayout {...props} />
@@ -35,7 +37,7 @@ export default (props) => {
         <Route
           path={ADMIN}
           render={() => {
-            if (!_.isEmpty(user) && user.userType === "admin") {
+            if (!_.isEmpty(userFromStorage) && userFromStorage.userType === "admin") {
               return (
                 <>
                   <AdminLayout {...props} />

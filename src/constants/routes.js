@@ -1,22 +1,22 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
 } from "react-router-dom";
+import { ADMIN, LOGIN, REGISTER, USER } from "./routingNames";
 import _ from "lodash";
 import Login from "../pages/Auth/Login";
 import Register from "../pages/Auth/Register";
-import { ADMIN, LOGIN, REGISTER, USER } from "./routingNames";
 import Layout from '../layout'
-import { useSelector } from "react-redux";
+import { getFromLocal } from "../utils/Cache";
 
 export default () => {
   return (
     <Router>
       <Switch>
-        {/* <Route exact path="/" component={Dashboard} /> */}
         <Route exact path="/" component={Login} />
         <Route exact path={LOGIN} component={Login} />
         <Route exact path={REGISTER} component={Register} />
@@ -28,11 +28,13 @@ export default () => {
 
 export const PrivateRoute = ({ component: Component, ...rest }) => {
   const user = useSelector((state) => state.authReducer.user);
+  const userFromStorage = getFromLocal("userInformation");
+  
   return (
     <Route
       {...rest}
       render={(props) =>
-        !_.isEmpty(user) ? (
+        !_.isEmpty(userFromStorage) ? (
           <Component {...props} />
         ) : (
           <Redirect

@@ -1,6 +1,7 @@
 import React from "react";
 import { Col } from "antd";
 import { Link } from "react-router-dom";
+import { USER_BOOKINGS, USER_SLOTS } from "../../constants/routingNames";
 
 export default () => {
   return (
@@ -8,12 +9,12 @@ export default () => {
       <div className="sidebar-cover bg-grey">
         <ul>
           <li>
-            <Link to="#">
+            <Link to={`${USER_SLOTS}`}>
               <i className="fa fa-th"></i>Book Parking
             </Link>
           </li>
           <li>
-            <Link to="#">
+            <Link to={`${USER_BOOKINGS}`}>
               <i className="fa fa-th"></i>My Bookings
             </Link>
           </li>
