@@ -4,3 +4,4 @@ export const USER = "/user";
 export const ADMIN = "/admin";
 export const USER_SLOTS = `${USER}/slots`;
 export const USER_BOOKINGS = `${USER}/bookings`;
+export const USER_FEEDBACK = `${USER}/feedback`;

@@ -14,6 +14,7 @@ export default () => {
     console.log("onConfirmBooking: ", onConfirmBooking);
     setBookingModal(false);
   };
+ 
   return (
     <>
       <ParkingView collection={SLOTS_1} onSlotClick={onSlotClick} />

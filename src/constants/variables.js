@@ -20,7 +20,7 @@ export const SLOTS_1 = [
   {
     uuid: "slot4",
     name: "Slot 4",
-    status: "Free",
+    status: "Booked",
     floor: 1,
   },
   {

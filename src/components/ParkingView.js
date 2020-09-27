@@ -14,7 +14,7 @@ export default ({ collection, onSlotClick }) => {
               <>
                 <Col
                   span={4}
-                  key={index}
+                  key={`area${item.info.area}${index}`}
                   className="slot-col"
                   style={
                     (index === 0 || index === 6) && {
@@ -31,9 +31,9 @@ export default ({ collection, onSlotClick }) => {
                     onClick={() => onSlotClick(item)}
                   >
                     <div className="slot-name">
-                      <h4>{item.name}</h4>
+                      <h4>{item.info.name}</h4>
                     </div>
-                    {item.status === "Booked" ? (
+                    {item.name !== item.name ? (
                       <img src={Car} className="car-img" />
                     ) : (
                       <div className="slot-free">

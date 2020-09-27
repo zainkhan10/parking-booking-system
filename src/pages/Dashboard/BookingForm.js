@@ -39,11 +39,11 @@ export default ({ modalVisible, onConfirmBooking, slotDetail, onCancel }) => {
         onCancel={() => onCancel()}
       >
         <Descriptions title="Slot Information">
-          <Descriptions.Item label="Slot Name">
-            {slotDetail.name}
+          <Descriptions.Item label="Slot Name" style={{textTransform:'capitalize'}}>
+            {slotDetail && slotDetail.name}
           </Descriptions.Item>
-          <Descriptions.Item label="Slot Floor">
-            {slotDetail.floor}
+          <Descriptions.Item label="Slot Area">
+            {slotDetail && slotDetail.area}
           </Descriptions.Item>
         </Descriptions>
         <Form
@@ -116,17 +116,17 @@ export default ({ modalVisible, onConfirmBooking, slotDetail, onCancel }) => {
                   {PARKING_DURATION.map((item, index) => {
                     return (
                       <Option value={item} key={index}>
-                        {item}
+                        {item}slotDetail.inf
                       </Option>
                     );
                   })}
                 </Select>
               </Form.Item>
-              <Form.Item>
+              {/* <Form.Item>
                 <Button type="primary" htmlType="submit">
                   Check Availablity
                 </Button>
-              </Form.Item>
+              </Form.Item> */}
             </Col>
           </Row>
         </Form>

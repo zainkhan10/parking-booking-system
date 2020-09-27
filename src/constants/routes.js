@@ -27,9 +27,7 @@ export default () => {
 };
 
 export const PrivateRoute = ({ component: Component, ...rest }) => {
-  const user = useSelector((state) => state.authReducer.user);
   const userFromStorage = getFromLocal("userInformation");
-  
   return (
     <Route
       {...rest}

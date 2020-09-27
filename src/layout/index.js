@@ -9,7 +9,6 @@ import "./style.css";
 import { getFromLocal } from "../utils/Cache";
 
 export default (props) => {
-  const user = useSelector((state) => state.authReducer.user);
   const userFromStorage = getFromLocal("userInformation");
   return (
     <>
@@ -37,7 +36,10 @@ export default (props) => {
         <Route
           path={ADMIN}
           render={() => {
-            if (!_.isEmpty(userFromStorage) && userFromStorage.userType === "admin") {
+            if (
+              !_.isEmpty(userFromStorage) &&
+              userFromStorage.userType === "admin"
+            ) {
               return (
                 <>
                   <AdminLayout {...props} />
