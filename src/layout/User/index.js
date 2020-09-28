@@ -11,9 +11,9 @@ import Header from "./Header";
 import ContentContainer from "./ContentContainer";
 import Sidebar from "./Sidebar";
 import Content from "./Content";
-import Slots from "../../pages/Dashboard";
-import Bookings from "../../pages/Bookings";
-import Feedback from "../../pages/Feedback";
+import Slots from "../../pages/User/Dashboard";
+import Bookings from "../../pages/User/Bookings";
+import Feedback from "../../pages/User/Feedback";
 
 export default (props) => {
   return (

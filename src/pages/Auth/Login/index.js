@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Col, Row, Form, Input, Button, Alert, Spin } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import _ from "lodash";
 import "./style.css";
-import { REGISTER, USER_SLOTS } from "../../../constants/routingNames";
-import { verifyUser } from "../../../redux/Actions/Creators/Auth";
+import {
+  ADMIN_USERS,
+  REGISTER,
+  USER_SLOTS,
+} from "../../../constants/routingNames";
 import { getFromLocal, saveToLocal } from "../../../utils/Cache";
 import FirebaseDb from "../../../firebase";
 
@@ -18,14 +20,15 @@ export default ({ history }) => {
     const userFromStorage = getFromLocal("userInformation");
     if (!_.isEmpty(userFromStorage)) {
       if (userFromStorage.userType === "normal") history.push(`${USER_SLOTS}`);
+      else if(userFromStorage.userType === "admin") history.push(`${ADMIN_USERS}`)
     }
   }, []);
 
   const onFinish = (values) => {
     setLoader(true);
     const { email, password } = values;
-    if (email === "parkingadmin@gmail.com" && password === "password") {
-      window.location = "/admindashboard/currentreservations";
+    if (email === "bookingsystemparking@gmail.com" && password === "admin") {
+      history.push(`${ADMIN_USERS}`);
       return;
     }
     FirebaseDb.auth()
@@ -40,7 +43,11 @@ export default ({ history }) => {
               ...userInfo.val().info,
               uid: user.user.uid,
             });
-            history.push(`${USER_SLOTS}`);
+            if (userInfo.val().info.userType === "admin") {
+              history.push(`${ADMIN_USERS}`);
+            } else if (userInfo.val().info.userType === "normal") {
+              history.push(`${USER_SLOTS}`);
+            }
           })
           .catch((err) => {
             setLoader(false);

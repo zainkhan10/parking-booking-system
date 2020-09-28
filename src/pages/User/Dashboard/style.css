@@ -1,5 +1,5 @@
 .slots-collapse .ant-collapse-content-box{
-    background: url(../../assets/images/floor.jpg);
+    background: url(../../../assets/images/floor.jpg);
     background-size: cover;
     padding: 0;
 }
@@ -12,8 +12,6 @@
     width: 100%;
     height: unset;
     border: 0 !important;
-    /* border-left: 2px solid #fff; */
-    /* border-right: 2px solid #fff; */
     background: none;
     outline: 0 !important;
     cursor: pointer;

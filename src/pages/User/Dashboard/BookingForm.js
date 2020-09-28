@@ -3,11 +3,9 @@ import { Col, DatePicker, Descriptions, Row, Select, Form, Button } from "antd";
 import moment from "moment";
 import {
   PARKING_DURATION,
-  SLOTS_1,
   START_TIME,
-} from "../../constants/variables";
-import Modal from "../../components/Modal";
-import ParkingView from "../../components/ParkingView";
+} from "../../../constants/variables";
+import Modal from "../../../components/Modal";
 const { Option } = Select;
 
 export default ({ modalVisible, onConfirmBooking, slotDetail, onCancel }) => {
