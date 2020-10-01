@@ -14,7 +14,9 @@ export default () => {
       .once("value", (values) => {
         setFeedbacks(Object.values(values.val()));
         setLoader(false);
-      });
+      })
+      .then((res) => setLoader(false))
+      .catch((err) => setLoader(false));
   };
 
   useEffect(() => {
