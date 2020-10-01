@@ -20,18 +20,9 @@ export const normalizeUsers = [
     key: "mobile",
     render: (row) => row.info.mobile,
   },
-  {
-    title: "Action",
-    key: "action",
-    render: (row) => (
-      <Tooltip title="Delete" placement="right">
-        <button className="delete-btn">
-          <i className="fa fa-trash"></i>
-        </button>
-      </Tooltip>
-    ),
-  },
 ];
+
+// ************************ Normalize Users End ************************
 
 // ************************ Normalize Feedbacks ************************
 
@@ -54,6 +45,118 @@ export const normalizeFeedbacks = [
   {
     title: "Date / Time",
     key: "dateTime",
-    render: (row) => `${moment(row.dateTime).format("L")} ${moment(row.dateTime).format("LT")}`,
+    render: (row) =>
+      `${moment(row.dateTime).format("L")} ${moment(row.dateTime).format(
+        "LT"
+      )}`,
   },
 ];
+
+// ************************ Normalize Feedbacks End ************************
+
+// ************************ Normalize User Bookings ************************
+
+export const normalizeUserBookings = (deleteBooking) => {
+  const columns = [
+    {
+      title: "Slot Name",
+      key: "slotName",
+      render: (row) => (
+        <span style={{ textTransform: "capitalize" }}>
+          {row.slotName}
+        </span>
+      ),
+    },
+    {
+      title: "Area",
+      key: "slotArea",
+      render: (row) => row.slotArea,
+    },
+    {
+      title: "Start Date / Time",
+      key: "startDate",
+      render: (row) =>
+        `${moment(row.startDate).format("L")} ${moment(
+          row.startDate
+        ).format("LT")}`,
+    },
+    {
+      title: "End Date / Time",
+      key: "endDate",
+      render: (row) =>
+        `${moment(row.endDate).format("L")} ${moment(
+          row.endDate
+        ).format("LT")}`,
+    },
+    {
+      title: "",
+      key: "action",
+      render: (row) => (
+        <Tooltip title="Cancel Booking">
+          <button className="delete-btn" onClick={() => deleteBooking(row.slotName, row.bookingID)}>
+            <i className="fa fa-trash"></i>
+          </button>
+        </Tooltip>
+      ),
+    },
+  ];
+  return columns;
+};
+
+// ************************ Normalize User Bookings End ************************
+
+// ************************ Normalize Admin Bookings ************************
+
+export const normalizeAdminBookings = (deleteBooking) => {
+  const columns = [
+    {
+      title: "Slot Name",
+      key: "slotName",
+      render: (row) => (
+        <span style={{ textTransform: "capitalize" }}>
+          {row.slotName}
+        </span>
+      ),
+    },
+    {
+      title: "Area",
+      key: "slotArea",
+      render: (row) => row.slotArea,
+    },
+    {
+      title: "User",
+      key: "username",
+      render: (row) => row.username,
+    },
+    {
+      title: "Start Date / Time",
+      key: "startDate",
+      render: (row) =>
+        `${moment(row.startDate).format("L")} ${moment(
+          row.startDate
+        ).format("LT")}`,
+    },
+    {
+      title: "End Date / Time",
+      key: "endDate",
+      render: (row) =>
+        `${moment(row.endDate).format("L")} ${moment(
+          row.endDate
+        ).format("LT")}`,
+    },
+    {
+      title: "",
+      key: "action",
+      render: (row) => (
+        <Tooltip title="Cancel Booking">
+          <button className="delete-btn" onClick={() => deleteBooking(row.slotName, row.bookingID)}>
+            <i className="fa fa-trash"></i>
+          </button>
+        </Tooltip>
+      ),
+    },
+  ];
+  return columns;
+};
+
+// ************************ Normalize Admin Bookings End ************************

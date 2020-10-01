@@ -3,8 +3,8 @@ import { Col } from "antd";
 import { Link } from "react-router-dom";
 import {
   USER_BOOKINGS,
+  USER_BOOK_PARKING,
   USER_FEEDBACK,
-  USER_SLOTS,
 } from "../../constants/routingNames";
 import FirebaseDb from "../../firebase";
 import { removeFromLocal } from "../../utils/Cache";
@@ -23,7 +23,7 @@ export default ({ history }) => {
       <div className="sidebar-cover bg-grey">
         <ul>
           <li>
-            <Link to={`${USER_SLOTS}`}>
+            <Link to={`${USER_BOOK_PARKING}`}>
               <i className="fa fa-th"></i>Book Parking
             </Link>
           </li>

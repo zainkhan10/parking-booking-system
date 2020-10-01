@@ -30,7 +30,11 @@ export default () => {
       <div className="heading-with-item">
         <h2>Users</h2>
       </div>
-      <Table dataSource={users} columns={normalizeUsers} loading={loader} />
+      <Table
+        dataSource={users}
+        columns={normalizeUsers}
+        loading={loader}
+      />
     </>
   );
 };

@@ -1,11 +1,11 @@
-import Admin from "../layout/Admin";
-
 export const LOGIN = "/login";
 export const REGISTER = "/register";
 export const USER = "/user";
 export const ADMIN = "/admin";
-export const USER_SLOTS = `${USER}/slots`;
+export const USER_BOOK_PARKING = `${USER}/book-parking`;
 export const USER_BOOKINGS = `${USER}/bookings`;
 export const USER_FEEDBACK = `${USER}/feedback`;
 export const ADMIN_USERS = `${ADMIN}/users`;
 export const ADMIN_FEEDBACKS = `${ADMIN}/feedbacks`;
+export const ADMIN_BOOKINGS = `${ADMIN}/bookings`;
+export const ADMIN_BOOK_PARKING = `${ADMIN}/book-parking`;

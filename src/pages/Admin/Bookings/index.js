@@ -3,16 +3,14 @@ import { Table } from "antd";
 import _ from "lodash";
 import FirebaseDb from "../../../firebase";
 import AlertBox from "../../../components/AlertMsg";
-import { getFromLocal } from "../../../utils/Cache";
-import { normalizeUserBookings } from "../../../constants/normalizer";
+import { normalizeAdminBookings } from "../../../constants/normalizer";
 
 export default () => {
-  const userFromStorage = getFromLocal("userInformation");
   const [successMsg, setSuccessMsg] = useState(false);
   const [loader, setLoader] = useState(false);
   const [bookedSlots, setBookedSlots] = useState([]);
 
-  const getBookedSlots = () => {
+  const getAllBookings = () => {
     setLoader(true);
     FirebaseDb.database()
       .ref("slots/")
@@ -23,14 +21,13 @@ export default () => {
           if (_.has(filterValues[i], "booking"))
             slots = slots.concat(Object.values(filterValues[i].booking));
         }
-        const getUserSlots = slots.filter((e) => e.uid === userFromStorage.uid);
-        setBookedSlots(getUserSlots);
+        setBookedSlots(slots);
         setLoader(false);
       });
   };
 
   useEffect(() => {
-    getBookedSlots();
+    getAllBookings();
   }, []);
 
   const deleteBooking = (slotName, bookingID) => {
@@ -46,7 +43,7 @@ export default () => {
         .then((res) => {
           setLoader(false);
           setSuccessMsg(true);
-          getBookedSlots();
+          getAllBookings();
         })
         .catch((err) => console.log(err));
     });
@@ -55,11 +52,11 @@ export default () => {
   return (
     <>
       <div className="heading-with-item">
-        <h2>My Bookings</h2>
+        <h2>Bookings</h2>
       </div>
       <Table
         dataSource={bookedSlots}
-        columns={normalizeUserBookings(deleteBooking)}
+        columns={normalizeAdminBookings(deleteBooking)}
         loading={loader}
       />
       {successMsg && (

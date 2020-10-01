@@ -12,7 +12,6 @@ export default () => {
     FirebaseDb.database()
       .ref("admin/feedback/")
       .once("value", (values) => {
-        console.log(Object.values(values.val()));
         setFeedbacks(Object.values(values.val()));
         setLoader(false);
       });
@@ -24,10 +23,14 @@ export default () => {
 
   return (
     <>
-       <div className="heading-with-item">
+      <div className="heading-with-item">
         <h2>Feedbacks</h2>
       </div>
-      <Table dataSource={feedbacks} columns={normalizeFeedbacks} loading={loader} />
+      <Table
+        dataSource={feedbacks}
+        columns={normalizeFeedbacks}
+        loading={loader}
+      />
     </>
   );
 };

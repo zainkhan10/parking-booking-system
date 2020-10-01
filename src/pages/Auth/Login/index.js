@@ -7,7 +7,7 @@ import "./style.css";
 import {
   ADMIN_USERS,
   REGISTER,
-  USER_SLOTS,
+  USER_BOOK_PARKING,
 } from "../../../constants/routingNames";
 import { getFromLocal, saveToLocal } from "../../../utils/Cache";
 import FirebaseDb from "../../../firebase";
@@ -19,7 +19,7 @@ export default ({ history }) => {
   useEffect(() => {
     const userFromStorage = getFromLocal("userInformation");
     if (!_.isEmpty(userFromStorage)) {
-      if (userFromStorage.userType === "normal") history.push(`${USER_SLOTS}`);
+      if (userFromStorage.userType === "normal") history.push(`${USER_BOOK_PARKING}`);
       else if(userFromStorage.userType === "admin") history.push(`${ADMIN_USERS}`)
     }
   }, []);
@@ -27,10 +27,6 @@ export default ({ history }) => {
   const onFinish = (values) => {
     setLoader(true);
     const { email, password } = values;
-    if (email === "bookingsystemparking@gmail.com" && password === "admin") {
-      history.push(`${ADMIN_USERS}`);
-      return;
-    }
     FirebaseDb.auth()
       .signInWithEmailAndPassword(email.toLowerCase(), password)
       .then((user) => {
@@ -46,7 +42,7 @@ export default ({ history }) => {
             if (userInfo.val().info.userType === "admin") {
               history.push(`${ADMIN_USERS}`);
             } else if (userInfo.val().info.userType === "normal") {
-              history.push(`${USER_SLOTS}`);
+              history.push(`${USER_BOOK_PARKING}`);
             }
           })
           .catch((err) => {

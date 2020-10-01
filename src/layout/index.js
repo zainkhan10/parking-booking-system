@@ -1,5 +1,4 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { Route, Switch, Redirect } from "react-router-dom";
 import _ from "lodash";
 import { ADMIN, USER } from "../constants/routingNames";

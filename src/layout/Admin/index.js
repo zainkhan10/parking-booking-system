@@ -9,9 +9,12 @@ import {
   ADMIN,
   ADMIN_FEEDBACKS,
   ADMIN_USERS,
+  ADMIN_BOOKINGS, ADMIN_BOOK_PARKING
 } from "../../constants/routingNames";
+import Bookings from "../../pages/Admin/Bookings";
 import Users from "../../pages/Admin/Users";
 import Feedbacks from "../../pages/Admin/Feedbacks";
+import BookParking from '../../pages/Admin/BookParking'
 
 export default (props) => {
   return (
@@ -28,6 +31,16 @@ export default (props) => {
                   <Row>
                     <Col span={24}>
                       <Switch>
+                      <Route
+                          exact
+                          path={`${ADMIN_BOOK_PARKING}`}
+                          component={BookParking}
+                        />
+                        <Route
+                          exact
+                          path={`${ADMIN_BOOKINGS}`}
+                          component={Bookings}
+                        />
                         <Route
                           exact
                           path={`${ADMIN_USERS}`}

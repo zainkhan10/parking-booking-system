@@ -1,0 +1,56 @@
+.slots-collapse .ant-collapse-content-box{
+    background: url(../../../assets/images/floor.jpg);
+    background-size: cover;
+    padding: 0;
+}
+.slots-cover{
+    background-color: rgba(0,0,0,.3);
+    padding: 20px;
+}
+.slot{
+    text-align: center;
+    width: 100%;
+    height: unset;
+    border: 0 !important;
+    background: none;
+    outline: 0 !important;
+    cursor: pointer;
+}
+.car-img{
+    height: 70px;
+}
+.slot-col{
+   border-right: 4px solid #e0dddd;
+}
+.slot-free{
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.slot-free p {
+    margin: 0;
+    color: #fff;
+    font-size: 11px;
+    text-transform: uppercase;
+    opacity: .7;
+    font-weight: 600;
+}
+.slot-name{
+    text-align: center;
+    margin: 0 8px;
+    border-radius: 2px;
+    padding: 2px 0;
+    background-color: #afaf35;
+}
+.slot-name h4{
+    margin: 0;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.road-image{
+    max-width: 100%;
+    margin: 15px 0;
+}

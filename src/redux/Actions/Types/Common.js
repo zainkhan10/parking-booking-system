@@ -1,2 +1,0 @@
-export const SHOW_SUCCESS_MSG = "SHOW_SUCCESS_MSG";
-export const HIDE_SUCCESS_MSG = "HIDE_SUCCESS_MSG";

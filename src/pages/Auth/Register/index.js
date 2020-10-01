@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { Col, Row, Form, Input, Button, Spin } from "antd";
+import { Col, Row, Form, Input, Button, Spin, Alert } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
+import _ from "lodash";
 import { LOGIN } from "../../../constants/routingNames";
 import AlertBox from "../../../components/AlertMsg";
 import FirebaseDb from "../../../firebase";
 import "./style.css";
 
 export default ({ history }) => {
+  const [errMsg, setErrMsg] = useState(false);
   const [successMsg, setSuccessMsg] = useState(false);
   const [loader, setLoader] = useState(false);
 
@@ -26,6 +28,7 @@ export default ({ history }) => {
               email: email.toLowerCase(),
               mobile,
               userType: "normal",
+              uid: user.user.uid,
             },
             selected: {
               slotBooked: "",
@@ -42,7 +45,7 @@ export default ({ history }) => {
       })
       .catch((error) => {
         setLoader(false);
-        alert(error);
+        setErrMsg(error.message);
       });
   };
 
@@ -138,6 +141,14 @@ export default ({ history }) => {
                 </Form.Item>
                 Or <Link to={LOGIN}>back to Login</Link>
               </Form>
+              {!_.isEmpty(errMsg) && (
+                <Alert
+                  message={errMsg}
+                  type="error"
+                  showIcon
+                  className="mt-10"
+                />
+              )}
             </Spin>
           </div>
         </Col>
