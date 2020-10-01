@@ -29,12 +29,9 @@ jobs:
           node-version: 12
           
       - name: Installing Node Modules
-        run: npm i
-        
+        run: npm i        
       - name: Building Project
-        run: npm run build
-
-      # Runs a set of commands using the runners shell
+        run: CI=false npm run build
       - name: Installing Surge
         run: npm install --global surge
       - name: Deploying using surge
