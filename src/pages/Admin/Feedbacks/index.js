@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Table } from "antd";
+import _ from "lodash";
 import { normalizeFeedbacks } from "../../../constants/normalizer";
 import FirebaseDb from "../../../firebase";
 
@@ -12,7 +13,8 @@ export default () => {
     FirebaseDb.database()
       .ref("admin/feedback/")
       .once("value", (values) => {
-        setFeedbacks(Object.values(values.val()));
+        if (!_.isEmpty(values.val()))
+          setFeedbacks(Object.values(values.val()));
         setLoader(false);
       })
       .then((res) => setLoader(false))
