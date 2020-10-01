@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b6de2c6e07aea780d84a9bfdbf776463",
+    "revision": "c26cf3b066acdbabc70ae5c9259979eb",
     "url": "/parking-booking-system/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/parking-booking-system/static/css/2.cd846464.chunk.css"
   },
   {
-    "revision": "21794dda5695329f6dc4",
+    "revision": "03f655ed63f2cde10ae2",
     "url": "/parking-booking-system/static/css/main.d2b6e1cc.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/parking-booking-system/static/js/2.9139823f.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "21794dda5695329f6dc4",
-    "url": "/parking-booking-system/static/js/main.aa73a616.chunk.js"
+    "revision": "03f655ed63f2cde10ae2",
+    "url": "/parking-booking-system/static/js/main.b84e4240.chunk.js"
   },
   {
     "revision": "8620c941ec0d56a442f8",
