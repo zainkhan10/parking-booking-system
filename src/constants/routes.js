@@ -13,9 +13,8 @@ import Layout from "../layout";
 import { getFromLocal } from "../utils/Cache";
 
 export default () => {
-  console.log("process.env.PUBLIC_URL: ", process.env.PUBLIC_URL)
   return (
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router>
       <Switch>
         <Route exact path="/" component={Login} />
         <Route exact path={LOGIN} component={Login} />
