@@ -9,12 +9,13 @@ import { ADMIN, LOGIN, REGISTER, USER } from "./routingNames";
 import _ from "lodash";
 import Login from "../pages/Auth/Login";
 import Register from "../pages/Auth/Register";
-import Layout from '../layout'
+import Layout from "../layout";
 import { getFromLocal } from "../utils/Cache";
 
 export default () => {
+  console.log("process.env.PUBLIC_URL: ", process.env.PUBLIC_URL)
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Switch>
         <Route exact path="/" component={Login} />
         <Route exact path={LOGIN} component={Login} />
